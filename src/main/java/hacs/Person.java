@@ -17,7 +17,7 @@ abstract public class Person {
 	ClassCourseList courseList;
 	CourseMenu theCourseMenu;
 	Course currentCourse;
-	Assignment CurrentAssignment;
+	Assignment currentAssignment;
 
 	public Person() {
 		courseList = new ClassCourseList();
@@ -42,7 +42,6 @@ abstract public class Person {
 	}
 
 	public void show() {
-		theCourseMenu.show();
 	}
 
 	public boolean ifLogout() {

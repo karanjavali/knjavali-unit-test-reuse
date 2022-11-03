@@ -21,7 +21,9 @@ class TestAssignment {
 
     @Test
     void setAssSpec() {
-        
+        String spec = "123";
+        obj.setAssSpec(spec);
+        Assertions.assertEquals("123",obj.assSpec);
     }
 
     @Test
