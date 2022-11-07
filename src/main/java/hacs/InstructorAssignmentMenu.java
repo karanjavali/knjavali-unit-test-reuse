@@ -5,21 +5,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.text.DateFormat;
 
-/**
- * Title:        HACS
- * Description:
- * Copyright:    Copyright (c) 2002
- * Company:      msu
- * @author Zhang ji Zhu Wei
- * @version 1.0
- */
-
 public class InstructorAssignmentMenu extends AssignmentMenu {
-////  class AssignmentMenu
   private final boolean bSubmit = false;
   private Assignment theAssignment;
   JComboBox combSolutionList = new JComboBox();
-////////////////////////
 
 
   JTextField tbAssignmentName = new JTextField();
@@ -56,13 +45,13 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
     tbSuggestedSolution.setBounds(new Rectangle(197, 149, 339, 22));
     buttonGrade.setText("Grade");
     buttonGrade.setBounds(new Rectangle(458, 199, 79, 29));
-    buttonGrade.addActionListener(this::buttonGrade_actionPerformed);
+    buttonGrade.addActionListener(this::buttonGradeActionPerformed);
     buttonReport.setText("Report");
     buttonReport.setBounds(new Rectangle(365, 249, 79, 29));
-    buttonReport.addActionListener(this::buttonReport_actionPerformed);
+    buttonReport.addActionListener(this::buttonReportActionPerformed);
     buttonClose.setText("Close");
     buttonClose.setBounds(new Rectangle(86, 253, 79, 29));
-    buttonClose.addActionListener(this::buttonClose_actionPerformed);
+    buttonClose.addActionListener(this::buttonCloseActionPerformed);
     combSolutionList.setBounds(new Rectangle(32, 204, 413, 22));
     this.getContentPane().add(jLabel1, null);
     this.getContentPane().add(tbAssignmentName, null);
@@ -86,19 +75,19 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
     refreshSolutionList();
   }
 
-  void buttonClose_actionPerformed(ActionEvent e) {
+  void buttonCloseActionPerformed(ActionEvent e) {
     theAssignment.assName = tbAssignmentName.getText() ;
-    DateFormat tempDateFormat=DateFormat.getDateInstance(DateFormat.SHORT);
+    DateFormat tempDateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
     try {
-      theAssignment.dueDate =tempDateFormat.parse(tbDueDate.getText());
+      theAssignment.dueDate = tempDateFormat.parse(tbDueDate.getText());
     } catch (Exception ee) {
       /* Ignore EXCEPTIONNAME. */
     }
     theAssignment.suggestSolution.solutionFileName = tbSuggestedSolution.getText();
   }
 
-  void buttonGrade_actionPerformed(ActionEvent e) {
-    Solution theSolution=(Solution) combSolutionList.getSelectedItem();
+  void buttonGradeActionPerformed(ActionEvent e) {
+    Solution theSolution = (Solution) combSolutionList.getSelectedItem();
     if (theSolution == null)
        return;
     SolutionGradingDlg dlg = new SolutionGradingDlg();
@@ -106,7 +95,7 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
     refreshSolutionList();
   }
 
-  void buttonReport_actionPerformed(ActionEvent e) {
+  void buttonReportActionPerformed(ActionEvent e) {
     SolutionIterator iter = new SolutionIterator(theAssignment.theSolutionList);
     while(iter.hasNext()) {
       Solution aSolution = (Solution)iter.next();

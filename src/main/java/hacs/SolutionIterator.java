@@ -2,20 +2,10 @@ package hacs;
 
 import java.util.Iterator;
 
-/**
- * Title:        HACS
- * Description:
- * Copyright:    Copyright (c) 2002
- * Company:      msu
- * @author Zhang ji Zhu Wei
- * @version 1.0
- */
-
 public class SolutionIterator implements Iterator {
   SolutionList solutionlist;
 
-  ///  CurrentSolutionNumber: point to the location before the first element
-  int currentSolutionNumber =- 1;
+  int currentSolutionNumber = -1;
 
   public SolutionIterator() {
   }
@@ -31,7 +21,6 @@ public class SolutionIterator implements Iterator {
 
   public boolean hasNext()
   {
-    /**@todo: Implement this java.util.Iterator method*/
     if (currentSolutionNumber >= solutionlist.size()-1)
       return false;
     else
@@ -39,7 +28,6 @@ public class SolutionIterator implements Iterator {
   }
   public Object next()
   {
-    /**@todo: Implement this java.util.Iterator method*/
     if (hasNext()) {
       currentSolutionNumber++;
       return solutionlist.get(currentSolutionNumber);
@@ -48,12 +36,12 @@ public class SolutionIterator implements Iterator {
     }
   }
 
-  public Object next(String UserName)
+  public Object next(String userName)
   {
     Solution theSolution;
     theSolution = (Solution)next();
     while(theSolution != null) {
-      if(UserName.compareTo(theSolution.theAuthor) == 0) {
+      if(userName.compareTo(theSolution.theAuthor) == 0) {
         return theSolution;
       }
       theSolution = (Solution)next();
@@ -62,7 +50,6 @@ public class SolutionIterator implements Iterator {
   }
 
   public void remove() {
-    /**@todo: Implement this java.util.Iterator method*/
     solutionlist.remove(currentSolutionNumber);
   }
 

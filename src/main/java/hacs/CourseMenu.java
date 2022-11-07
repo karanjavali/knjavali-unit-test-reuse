@@ -5,16 +5,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Iterator;
 
-
-/**
- * Title:        HACS
- * Description:
- * Copyright:    Copyright (c) 2002
- * Company:      msu
- * @author Zhang ji Zhu Wei
- * @version 1.0
- */
-
 abstract public class CourseMenu extends JDialog
 {
   Course theCourse;
@@ -32,31 +22,41 @@ abstract public class CourseMenu extends JDialog
   JButton buttonChangeCourse = new JButton();
   JButton buttonLogout = new JButton();
 
-  public CourseMenu() {
-    try {
+  public CourseMenu()
+  {
+
+    try
+    {
       jbInit();
-    } catch(Exception e) {
+    }
+    catch(Exception e)
+    {
       e.printStackTrace();
     }
     setModal(true);
     setSize(503,294);
   }
 
-  private void jbInit() throws Exception {
+  private void jbInit() throws Exception
+  {
     buttonChangeCourse.setText("ChangeCourse");
     buttonChangeCourse.setBounds(new Rectangle(101, 211, 73, 37));
-    buttonChangeCourse.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        buttonChangeCourse_actionPerformed(e);
+    buttonChangeCourse.addActionListener(new java.awt.event.ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
+      {
+        buttonChangeCourseActionPerformed(e);
       }
     });
     this.getContentPane().setLayout(null);
     this.setTitle("");
     buttonLogout.setText("Logout");
     buttonLogout.setBounds(new Rectangle(267, 215, 73, 37));
-    buttonLogout.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        buttonLogout_actionPerformed(e);
+    buttonLogout.addActionListener(new java.awt.event.ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
+      {
+        buttonLogoutActionPerformed(e);
       }
     });
     this.getContentPane().add(buttonChangeCourse, null);
@@ -83,31 +83,29 @@ abstract public class CourseMenu extends JDialog
     Hacs.theFacade.addAssignment(theCourse);
     refresh();
   }
-  void AssignmentViewButton_actionPerformed(ActionEvent e)
+  void assignmentViewButtonActionPerformed(ActionEvent e)
   {
-    Assignment theAss=(Assignment) assignmentComboBox.getSelectedItem() ;
-    Hacs.theFacade.ViewAssignment(theAss);
+    Assignment theAss = (Assignment) assignmentComboBox.getSelectedItem() ;
+    Hacs.theFacade.viewAssignment(theAss);
   }
   void refresh()
   {
     assignmentComboBox.removeAllItems() ;
-    Iterator Iter=theCourse.assignmentList.iterator() ;
+    Iterator Iter = theCourse.assignmentList.iterator() ;
     while(Iter.hasNext() )
     {
       assignmentComboBox.addItem(Iter.next() );
     }
   }
 
-  void buttonChangeCourse_actionPerformed(ActionEvent e)
+  void buttonChangeCourseActionPerformed(ActionEvent e)
   {
-    bLogout=false;
-    hide();
+    bLogout = false;
   }
 
-  void buttonLogout_actionPerformed(ActionEvent e)
+  void buttonLogoutActionPerformed(ActionEvent e)
   {
-    bLogout=true;
-    hide();
+    bLogout = true;
   }
   boolean ifLogout()
   {

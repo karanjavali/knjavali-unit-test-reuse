@@ -6,7 +6,7 @@ import java.util.*;
  * Title: HACS Description: CSE870 Homework 3: Implementing Design Patterns
  * Copyright: Copyright (c) 2002 Company: Department of Computer Science and
  * Engineering, Michigan State University
- * 
+ *
  * @author Ji Zhang, Wei Zhu
  * @version 1.0
  */
@@ -17,7 +17,7 @@ abstract public class Person {
 	ClassCourseList courseList;
 	CourseMenu theCourseMenu;
 	Course currentCourse;
-	Assignment currentAssignment;
+	Assignment CurrentAssignment;
 
 	public Person() {
 		courseList = new ClassCourseList();
@@ -42,6 +42,7 @@ abstract public class Person {
 	}
 
 	public void show() {
+		theCourseMenu.show();
 	}
 
 	public boolean ifLogout() {
@@ -49,6 +50,7 @@ abstract public class Person {
 	}
 
 	public boolean showMenu() {
+
 		Iterator theIter = currentCourse.assignmentList.iterator();
 		theCourseMenu.theCourse = currentCourse;
 		Assignment theAssignment;
@@ -59,11 +61,11 @@ abstract public class Person {
 		return false;
 	}
 
-	public ClassCourseList GetCourseList() {
+	public ClassCourseList getCourseList() {
 		return courseList;
 	}
 
-	public void AddCourse(Course theCourse) {
+	public void addCourse(Course theCourse) {
 		courseList.add(theCourse);
 	}
 }

@@ -3,33 +3,15 @@ package hacs;
 import java.util.Iterator;
 import java.util.*;
 
-/**
- * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
- * 
- * @author Zhang ji Zhu Wei
- * @version 1.0
- * @author mjfindler
- * @version 2.0 
- * 
- * update to Java 8
- */
-
-/*
- * this class will iterate the course list attatched to on student and in turn
- * iterate the assignments of a course. after Function Visit(CourseList) it will
- * point to the location before the fist class, hasNext will retrun weather
- * there is next item. the next() will return the next Item Assignment;
- */
-
 public class ReminderVisitor extends NodeVisitor {
 
-	Reminder m_Reminder;
+	Reminder mReminder;
 
 	public ReminderVisitor() {
 	}
 
 	public ReminderVisitor(Reminder reminder) {
-		m_Reminder = reminder;
+		mReminder = reminder;
 	}
 
 	public void visitFacade(Facade facade) {
@@ -57,12 +39,11 @@ public class ReminderVisitor extends NodeVisitor {
 		int nDueDate = calendar.get(Calendar.DAY_OF_YEAR);
 		if (nDueDate <= (ntoday + 1) && nDueDate >= ntoday) /// upcoming
 		{
-			m_Reminder.listUpcoming.add("today is " + today.toString() + " " + assignment.assName + " Due Date is "
+			mReminder.listUpcoming.add("today is " + today.toString() + " " + assignment.assName + " Due Date is "
 					+ assignment.getDueDateString());
 		}
 		if (nDueDate < ntoday) {
-			// put to the
-			m_Reminder.listOverdue.add(assignment.assName + " Due Date is " + assignment.getDueDateString());
+			mReminder.listOverdue.add(assignment.assName + " Due Date is " + assignment.getDueDateString());
 		}
 
 	}

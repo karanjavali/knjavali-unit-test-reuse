@@ -5,12 +5,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-/**
- * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
- * 
- * @author Zhang ji Zhu Wei
- * @version 1.0
- */
 
 public class StudentAssignmentMenu extends AssignmentMenu {
 
@@ -90,10 +84,6 @@ public class StudentAssignmentMenu extends AssignmentMenu {
 		this.getContentPane().add(bCancel, null);
 	}
 
-	/*
-	 * check if the student has already had a solution or not. if not , create a new
-	 * solution for the student. after showing the solution attatch the soluiton;
-	 */
 	public void showMenu(Assignment assignment, Person thePerson) {
 		theAssignment = assignment;
 		SolutionIterator theIter = theAssignment.getSolutionIterator();

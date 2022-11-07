@@ -4,12 +4,6 @@ import java.awt.*;
 
 public class HighLevelCourseMenu extends CourseMenu {
 
-	/*
-	 * JButton AssignmentAddButton = new JButton(); JRadioButton OptionRadio = new
-	 * JRadioButton(); JComboBox OptionCombo = new JComboBox(); JButton
-	 * OptionViewButton = new JButton(); JButton OptionAddButton = new JButton();
-	 */
-
 	public HighLevelCourseMenu() {
 	}
 
@@ -49,7 +43,7 @@ public class HighLevelCourseMenu extends CourseMenu {
 	void showViewButtons() {
 		assignmentViewButton.setText("View");
 		assignmentViewButton.setBounds(new Rectangle(290, 54, 79, 29));
-		assignmentViewButton.addActionListener(this::AssignmentViewButton_actionPerformed);
+		assignmentViewButton.addActionListener(this::assignmentViewButtonActionPerformed);
 		optionViewButton.setText("View");
 		optionViewButton.setBounds(new Rectangle(290, 124, 79, 29));
 		this.getContentPane().add(assignmentViewButton, null);

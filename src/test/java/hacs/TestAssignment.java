@@ -3,6 +3,7 @@ package hacs;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 /**
@@ -13,60 +14,61 @@ class TestAssignment {
     Assignment obj = new Assignment();
 
     @Test
-    void setDueDate() {
+    void setDueDateTest() {
         Date date = new Date();
         obj.setDueDate(date);
         Assertions.assertEquals(date,obj.dueDate);
     }
 
     @Test
-    void setAssSpec() {
+    void setAssSpecTest() {
         String spec = "123";
         obj.setAssSpec(spec);
         Assertions.assertEquals("123",obj.assSpec);
     }
 
     @Test
-    void isOverDue() {
+    void isOverDueTest() {
+        Date today = new Date();
+        Assertions.assertEquals(today.after(obj.dueDate),obj.isOverDue());
     }
 
     @Test
-    void addSolution() {
+    void addSolutionTest1() {
+        Assertions.assertTrue(obj.addSolution() instanceof Solution);
     }
 
     @Test
-    void testAddSolution() {
+    void addSolutionTest2() {
+        Solution solution = new Solution();
+        obj.addSolution(solution);
+        Assertions.assertEquals(solution,obj.theSolutionList.get(obj.theSolutionList.size()-1));
+    }
+
+
+    @Test
+    void getSolutionTest() {
     }
 
     @Test
-    void submitSolution() {
+    void getSugSolutionTest() {
+        Assertions.assertEquals(obj.suggestSolution,obj.getSugSolution());
     }
 
     @Test
-    void getSolutionList() {
+    void getSolutionIteratorTest() {
     }
 
     @Test
-    void getSolution() {
+    void toStringTest() {
+        Assertions.assertEquals(obj.assName,obj.toString());
     }
 
     @Test
-    void getSugSolution() {
+    void getDueDateStringTest() {
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+        Assertions.assertEquals(dateFormat.format(obj.dueDate),obj.getDueDateString());
     }
 
-    @Test
-    void getSolutionIterator() {
-    }
 
-    @Test
-    void testToString() {
-    }
-
-    @Test
-    void getDueDateString() {
-    }
-
-    @Test
-    void accept() {
-    }
 }

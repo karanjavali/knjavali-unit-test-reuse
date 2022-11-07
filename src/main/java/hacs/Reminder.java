@@ -3,8 +3,6 @@ package hacs;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
-import java.util.*;
 
 /**
  * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
@@ -14,7 +12,7 @@ import java.util.*;
  */
 
 public class Reminder extends JDialog {
-	ClassCourseList CourseList;
+	ClassCourseList courseList;
 	JLabel jLabel1 = new JLabel();
 	JLabel jLabel2 = new JLabel();
 	java.awt.List listUpcoming = new java.awt.List();
@@ -43,7 +41,7 @@ public class Reminder extends JDialog {
 		buttonOK.setBounds(new Rectangle(149, 308, 67, 37));
 		buttonOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				buttonOK_actionPerformed(e);
+				buttonOKActionPerformed(e);
 			}
 		});
 		this.getContentPane().add(jLabel1, null);
@@ -60,7 +58,7 @@ public class Reminder extends JDialog {
 		show();
 	}
 
-	void buttonOK_actionPerformed(ActionEvent e) {
+	void buttonOKActionPerformed(ActionEvent e) {
 		hide();
 	}
 }

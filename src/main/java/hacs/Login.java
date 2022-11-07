@@ -8,16 +8,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-/**
- * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
- * 
- * @author Zhang ji Zhu Wei
- * @version 1.0
- * @author mjfindler
- * @version 2.0
- * 
- *          Update to Java 8
- */
 
 public class Login extends JDialog {
 
@@ -31,8 +21,9 @@ public class Login extends JDialog {
 	JRadioButton studentRadio = new JRadioButton();
 	JRadioButton instructorRadio = new JRadioButton();
 	ButtonGroup buttonGroup1 = new ButtonGroup();
+
 	private String userBox = null;
-	private USER_TYPE userType = USER_TYPE.Student;
+	private USER_TYPE userType = USER_TYPE.Student; // default to Student
 
 	public Login() {
 		try {
@@ -43,7 +34,7 @@ public class Login extends JDialog {
 		}
 	}
 
-	private void jbInit() {
+	private void jbInit() throws Exception {
 		this.getContentPane().setLayout(null);
 		jLabel1.setText("UserName");
 		jLabel1.setBounds(new Rectangle(26, 52, 80, 18));
@@ -51,10 +42,18 @@ public class Login extends JDialog {
 		jLabel2.setBounds(new Rectangle(23, 119, 80, 18));
 		loginButton.setText("Login");
 		loginButton.setBounds(new Rectangle(31, 212, 85, 28));
-		loginButton.addActionListener(this::loginButtonActionPerformed);
+		loginButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				loginButtonActionPerformed(e);
+			}
+		});
 		buttonExit.setText("Exit");
 		buttonExit.setBounds(new Rectangle(180, 211, 97, 28));
-		buttonExit.addActionListener(this::buttonExitActionPerformed);
+		buttonExit.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buttonExitActionPerformed(e);
+			}
+		});
 		userNameText.setBounds(new Rectangle(119, 52, 144, 22));
 		passwordText.setBounds(new Rectangle(118, 119, 147, 22));
 		studentRadio.setSelected(true);
@@ -81,47 +80,44 @@ public class Login extends JDialog {
 		try {
 			if (studentRadio.isSelected()) {
 				userType = USER_TYPE.Student;
-				file = new BufferedReader(new FileReader("StuInfo.txt"));
+				file = new BufferedReader(new FileReader("./src/main/java/hacs/StuInfo.txt"));
 			} else {
 				userType = USER_TYPE.Instructor;
-				file = new BufferedReader(new FileReader("InsInfor.txt"));
+				file = new BufferedReader(new FileReader("./src/main/java/hacs/InsInfor.txt"));
 			}
 			userBox = userNameText.getText();
-			String passwordBox = new String(passwordText.getPassword());
-			String aLine, userName, password;
-			aLine = file.readLine();
-			while (aLine != null) {
-				userName = getUserName(aLine);
-				password = getPassword(aLine);
+			String PasswordBox = new String(passwordText.getPassword());
+			String loginName = null;
+			String aline = null, userName = null, password = null;
+			while ((aline = file.readLine()) != null) {
+				userName = getUserName(aline);
+				password = getPassword(aline);
+				if (userName.compareTo(userBox) == 0 && password.compareTo(PasswordBox) == 0)
+					loginName = userName;
 			}
-		} catch (Exception ignored) {
+			if (loginName != null) {
+				this.hide();
+			}
+		} catch (Exception ee) {
 			;
 		}
 
 	}
 
-	/*
-	 * get the username from aline UserName:Password
-	 */
 	private String getUserName(String aline) {
 		int Sep = aline.lastIndexOf(':');
 		return aline.substring(0, Sep);
 	}
 
-	/*
-	 * get the password from aline UserName:Password
-	 */
 	private String getPassword(String aline) {
 		int Sep = aline.lastIndexOf(':');
-		return aline.substring(Sep + 1);
+		return aline.substring(Sep + 1, aline.length());
 	}
 
-	/* after login get the UserName of the login interface */
 	public String getUserName() {
 		return userBox;
 	}
 
-	/* after login get the userType of the login interface */
 	public USER_TYPE getUserType() {
 		return userType;
 	}
@@ -132,5 +128,6 @@ public class Login extends JDialog {
 
 	void buttonExitActionPerformed(ActionEvent e) {
 		mBExit = true;
+		hide();
 	}
 }

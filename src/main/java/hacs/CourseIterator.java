@@ -2,15 +2,6 @@ package hacs;
 
 import java.util.Iterator;
 
-/**
- * Title:        HACS
- * Description:
- * Copyright:    Copyright (c) 2002
- * Company:      msu
- * @author Zhang ji Zhu Wei
- * @version 1.0
- */
-
 public class CourseIterator implements Iterator
 {
   ClassCourseList theCourseList;
@@ -25,10 +16,7 @@ public class CourseIterator implements Iterator
   }
 
   public boolean hasNext() {
-    if (currentCourseNumber >= theCourseList.size() - 1)
-      return false;
-    else
-      return true;
+    return currentCourseNumber < theCourseList.size() - 1;
   }
 
   public Object next() {

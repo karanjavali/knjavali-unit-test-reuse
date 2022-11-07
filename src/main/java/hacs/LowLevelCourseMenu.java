@@ -2,9 +2,9 @@ package hacs;
 
 import java.awt.*;
 
-public class lowLevelCourseMenu extends CourseMenu {
+public class LowLevelCourseMenu extends CourseMenu {
 
-	public lowLevelCourseMenu() {
+	public LowLevelCourseMenu() {
 	}
 
 	void showMenu(Course theCourse) {
@@ -40,7 +40,7 @@ public class lowLevelCourseMenu extends CourseMenu {
 	void showViewButtons() {
 		assignmentViewButton.setText("View");
 		assignmentViewButton.setBounds(new Rectangle(290, 54, 79, 29));
-		assignmentViewButton.addActionListener(this::AssignmentViewButton_actionPerformed);
+		assignmentViewButton.addActionListener(this::assignmentViewButtonActionPerformed);
 		optionViewButton.setText("View");
 		optionViewButton.setBounds(new Rectangle(290, 124, 79, 29));
 		this.getContentPane().add(assignmentViewButton, null);

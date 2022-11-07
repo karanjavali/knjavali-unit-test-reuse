@@ -4,13 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-/**
- * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
- * 
- * @author Zhang ji Zhu Wei
- * @version 1.0
- */
-
 public class SolutionGradingDlg extends JDialog {
 	Solution theSolution;
 	JLabel jLabel1 = new JLabel();
@@ -37,7 +30,7 @@ public class SolutionGradingDlg extends JDialog {
 		buttonOK.setBounds(new Rectangle(217, 67, 79, 29));
 		buttonOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				buttonOK_actionPerformed(e);
+				buttonOKActionPerformed(e);
 			}
 		});
 		labelSolutionFileName.setBounds(new Rectangle(212, 34, 163, 18));
@@ -54,7 +47,7 @@ public class SolutionGradingDlg extends JDialog {
 		show();
 	}
 
-	void buttonOK_actionPerformed(ActionEvent e) {
+	void buttonOKActionPerformed(ActionEvent e) {
 		theSolution.theGrade = Integer.parseInt(tfGrad.getText());
 		hide();
 	}

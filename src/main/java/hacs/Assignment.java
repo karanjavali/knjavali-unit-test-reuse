@@ -1,21 +1,11 @@
 package hacs;
 
-/**
- * Title:        HACS
- * Description:  CSE870 Homework 3:  Implementing Design Patterns
- * Copyright:    Copyright (c) 2002
- * Company:      Department of Computer Science and Engineering, Michigan State University
- * @author Ji Zhang, Wei Zhu
- * @version 1.0
- */
-
 import java.util.*;
 import java.text.DateFormat;
 
 public class Assignment {
 
   protected String assName;
-  protected String strAssignmentFilename;
   protected Date dueDate = new Date();
   protected String assSpec;
   protected SolutionList theSolutionList = new SolutionList();
@@ -48,11 +38,7 @@ public class Assignment {
     theSolutionList.add(theSolution);
   }
 
-  public void submitSolution() {
-  }
 
-  public void getSolutionList() {
-  }
 
   /* return the solution of the give name
   */
@@ -66,8 +52,7 @@ public class Assignment {
   }
 
   public SolutionIterator getSolutionIterator() {
-    SolutionIterator theSolutionIterator = new SolutionIterator(theSolutionList);
-    return theSolutionIterator;
+    return new SolutionIterator(theSolutionList);
   }
 
   public String toString() {
